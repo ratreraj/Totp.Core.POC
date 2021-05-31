@@ -1,0 +1,44 @@
+﻿@model WebAppOtp.Models.OtpModels
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Totp</h1>
+
+
+<hr />
+<style>
+
+    .otp {
+        color: blue;
+        font-size: 20px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model != null)
+            {
+                <p class="otp">@Model.Otp </p>
+            }
+
+            <div class="form-group">
+                <label asp-for="Otp" class="control-label"></label>
+                <input asp-for="Otp" class="form-control" />
+                <span asp-validation-for="Otp" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Verify Otp" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
